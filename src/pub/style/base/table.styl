@@ -1,0 +1,38 @@
+
+
+
+table
+  border-spacing 0
+  border-collapse collapse
+  margin 24px 0
+  font-size .9em
+  width 100%
+  table-layout fixed
+
+tr
+  line-height 1.5
+  &:nth-child(4n + 1),
+  &:nth-child(4n + 2)
+    background-color transparent
+  &:nth-child(4n + 3),
+  &:nth-child(4n)
+    background-color #F6F8FA
+  // &:hover
+  //   background-color red
+
+th
+  font-size .9em
+th,
+td
+  border 1px solid #DFE2E5
+  padding 4px
+  // &:not([rowspan])
+  //   padding-bottom 2px
+  //   &:first-child
+  //     padding-top 2px
+  //     padding-bottom 8px
+
+td[rowspan]
+  &:first-child,
+  &:last-child
+    text-align center

@@ -1,0 +1,142 @@
+
+.board
+  &-head
+    position sticky
+    top 0
+    z-index 1000
+    background-color white
+  &-grid
+    padding 8px 16px
+    background-color #EFEFEF
+    display grid
+    grid-template-columns 0fr auto 0fr
+    grid-template-rows 32px
+    line-height 32px
+    > .username
+      font-weight bolder
+      margin-right 16px
+    > .email
+      overflow ellipsis
+    > .logout
+      white-space nowrap
+      margin-left 16px
+      place-self center end
+    @media (max-width: 576px)
+      grid-template-columns 1fr 0fr
+      grid-template-rows 32px 32px
+      > .username
+        overflow ellipsis
+      > .email
+        grid-column-start 1
+        grid-column-end 2
+        grid-row-start 2
+        grid-row-end 3
+        margin 0
+  &-tabs
+    display flex
+    border-bottom 1px solid #e1e4e8
+    margin 30px 0
+    overflow auto
+  &-tab
+    padding 12px 0
+    margin-right 24px
+    cursor pointer
+    opacity .6
+    font-weight 300
+    white-space nowrap
+    &.checked
+      text-decoration underline
+      opacity 1
+
+  &-self
+    display flex
+    &-side
+      flex 0 0 auto
+      padding-right 16px
+      border-right 1px solid #e1e4e8
+      margin-right 16px
+      line-height 20px
+      > div
+        cursor pointer
+        user-select none
+        margin-bottom 10px
+        &:last-child
+          margin-bottom 0
+        &.checked
+          font-weight bold
+    &-main
+      flex 1 0 0
+      line-height 24px
+    &-cell
+      margin-bottom 24px
+      &:last-child
+        margin-bottom 0
+    &-info
+      margin-bottom 24px
+    &-play
+      color #545454
+      font-size .9em
+
+
+  &-post
+    &-scan
+      display flex
+      align-items center
+      margin-bottom 24px
+      > p
+        margin-right auto
+        color inherit
+        &:last-of-type
+          margin-right 8px
+          color #545454
+          font-size .9em
+
+.board
+  &-case
+    &-info
+      display flex
+      min-height 15px
+      padding 3px 0
+      font-size 12px
+      line-height 15px
+      > span:last-child
+        margin-left auto
+    td:not(:first-child)
+      > .board-case-info
+        font-weight bold
+    &-ctrl
+      display flex
+      justify-content space-evenly
+      > span
+        cursor pointer
+    &-form
+      margin-top 24px
+    &-create
+      > .btn
+        float right
+      > p
+        line-height 26px;
+    &-table
+      span[role]
+        width 14px
+        height 14px
+        margin-left 8px
+        cursor pointer
+        background-color #343434
+        -webkit-mask no-repeat 16px 16px/center center
+        &.nonempty
+          background-color #0366d6;
+        &[role="img"]
+          -webkit-mask-image url('data:image/svg+xml;utf8,<svg viewBox=\"0 0 16 16\" xmlns=\"http://www.w3.org/2000/svg\"><path fill=\"%23ABABAB\" d=\"M12,5.5c0,0.6-0.4,1-1,1s-1-0.4-1-1s0.4-1,1-1S12,4.9,12,5.5z M15,14H1V2h14 M14,3H2v6.2L5.2,6l4,4l2-2l2.8,2.8V3z\" /></svg>')
+        &[role="link"]
+          -webkit-mask-image url('data:image/svg+xml;utf8,<svg viewBox=\"0 0 16 16\" xmlns=\"http://www.w3.org/2000/svg\"><path fill=\"%23ABABAB\" d=\"M14.7,4.1l-2.8-2.8c-0.5-0.4-1.2-0.4-1.7,0L6.9,4.7C6.6,5,6.6,5.5,6.9,5.8c0.3,0.3,0.8,0.3,1.1,0l2.5-2.5c0.3-0.3,0.8-0.3,1.1,0l1.1,1.1c0.3,0.3,0.3,0.8,0,1.1L10.2,8c-0.3,0.3-0.3,0.8,0,1.1c0.3,0.3,0.8,0.3,1.1,0l3.3-3.3C15.1,5.3,15.1,4.6,14.7,4.1C14.7,4.1,14.7,4.1,14.7,4.1z M4.4,12.7l-1.1-1.1c-0.3-0.3-0.3-0.8,0-1.1L5.8,8c0.3-0.3,0.3-0.8,0-1.1C5.5,6.6,5,6.6,4.7,6.9l-3.3,3.3c-0.5,0.5-0.5,1.2,0,1.7l2.8,2.8c0.5,0.5,1.2,0.5,1.7,0l3.3-3.3c0.3-0.3,0.3-0.8,0-1.1l0,0c-0.3-0.3-0.8-0.3-1.1,0l-2.5,2.5C5.2,13,4.7,13,4.4,12.7z M5.4,9.4l3.9-3.9c0.3-0.3,0.9-0.3,1.2,0c0.3,0.3,0.3,0.9,0,1.2l-3.9,3.9c-0.3,0.3-0.9,0.3-1.2,0C5.1,10.2,5.1,9.7,5.4,9.4z\" /></svg>')
+        &[role="toggle"]
+          -webkit-mask-image url('data:image/svg+xml;utf8,<svg viewBox=\"0 0 16 16\" xmlns=\"http://www.w3.org/2000/svg\"><path fill=\"%23ABABAB\" d=\"M14.8,1.6c0-0.2-0.2-0.3-0.4-0.4c-2.7-0.6-5.6,0.1-7.6,2.2C6.5,3.7,6.2,4,6,4.3C5.9,4.4,5.8,4.5,5.7,4.5c-1.1,0.3-2.1,0.8-3,1.7C2.3,6.6,2,7,1.7,7.5C1.5,7.9,1.9,8.4,2.3,8.2C3,8,3.8,7.8,4.5,7.8c0,0.1,0,0.1,0,0.2C5,8.7,5.6,9.3,6.2,9.9C6.7,10.4,7.3,11,8,11.5c0.1,0,0.1,0,0.2,0c0,0.8-0.1,1.5-0.4,2.2c-0.2,0.4,0.3,0.8,0.7,0.6c0.5-0.3,0.9-0.6,1.3-1c0.8-0.8,1.4-1.9,1.7-3c0-0.1,0.1-0.2,0.2-0.3c0.3-0.2,0.6-0.5,0.9-0.8C14.7,7.1,15.4,4.2,14.8,1.6L14.8,1.6z M11.4,6.9c-0.6,0.6-1.6,0.6-2.3,0c-0.6-0.6-0.6-1.6,0-2.3c0.6-0.6,1.6-0.6,2.3,0C12,5.3,12,6.3,11.4,6.9L11.4,6.9z M3,10.9c-0.5,0.5-2.5,3.5-1.9,4c0.6,0.6,3.6-1.5,4-1.9C5.6,12.5,5.5,11.6,5,11C4.4,10.5,3.5,10.4,3,10.9z\" /></svg>')
+        &[role="edit"]
+          -webkit-mask-image url('data:image/svg+xml;utf8,<svg viewBox=\"0 0 16 16\" xmlns=\"http://www.w3.org/2000/svg\"><path fill=\"%23ABABAB\" d=\"M1,12.1V15h2.9l8.3-8.3L9.3,3.8L1,12.1L1,12.1z M14.8,4.2c0.3-0.3,0.3-0.8,0-1.1c0,0,0,0,0,0l-1.8-1.8c-0.3-0.3-0.8-0.3-1.1,0c0,0,0,0,0,0l-1.5,1.5l2.9,2.9L14.8,4.2z\" /></svg>')
+        &[role="delete"]
+          -webkit-mask-image url('data:image/svg+xml;utf8,<svg viewBox=\"0 0 16 16\" xmlns=\"http://www.w3.org/2000/svg\"><path fill=\"%23ABABAB\" d=\"M3.5,5h9L11,15H5L3.5,5z M11.5,2h-2V1h-3v1h-2c-0.6,0-1,0.5-1,1v1h9V3C12.5,2.5,12.1,2,11.5,2\" /></svg>')
+        &:hover
+          opacity .7
+        &:active
+          opacity 1

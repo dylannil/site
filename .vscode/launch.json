@@ -1,0 +1,61 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "启动",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/src/loader.js",
+            "args": [
+                "--env=development"
+            ],
+            "outputCapture": "std",
+            "trace": true
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "测试",
+            "cwd": "${workspaceFolder}",
+            "program": "${workspaceFolder}/node_modules/mocha/bin/_mocha",
+            "args": [
+                "--no-config",
+                "-u", "bdd",
+                "-r", "esm",
+                "--timeout", "999999",
+                "--colors",
+                "--extension", "js",
+                "--reporter", "spec",
+                "--inline-diffs",
+                "--check-leaks",
+                "test/index.js"
+            ],
+            "internalConsoleOptions": "openOnSessionStart",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "outputCapture": "std",
+            "trace": true
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "构建",
+            "cwd": "${workspaceFolder}",
+            "program": "${workspaceFolder}/node_modules/.bin/rollup",
+            "args": [
+                "-c", "rollup.config.js",
+                "--pub"
+            ],
+            "internalConsoleOptions": "openOnSessionStart",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "outputCapture": "std",
+            "trace": true
+        }
+    ]
+}

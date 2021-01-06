@@ -1,0 +1,111 @@
+
+// 定义赫蹏根 class 名
+$root-selector = ".heti"
+
+$darkmode = true
+// true | false | 'manual'
+
+$manualmode-auto-selector = '[data-darkmode="auto"] &'
+$manualmode-dark-selector = '[data-darkmode="dark"] &'
+
+// 字体 Fonts
+// 字体栈 Font Stacks
+$_font-stack-sans = "Helvetica Neue", Helvetica, Arial
+$_font-stack-serif = "Times New Roman", Times
+$_font-stack-mono = "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier
+$_font-stack-symbol = "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
+
+// 字体族 Font Families
+$font-family-hei = $_font-stack-sans, "Heti Hei", sans-serif, $_font-stack-symbol
+$font-family-song = $_font-stack-serif, "Heti Song", serif, $_font-stack-symbol
+$font-family-kai = $_font-stack-serif, "Heti Kai", serif, $_font-stack-symbol
+$font-family-hei-black = $_font-stack-sans, "Heti Hei Black", sans-serif, $_font-stack-symbol
+$font-family-song-black = $_font-stack-serif, "Heti Song Black", serif, $_font-stack-symbol
+$font-family-kai-black = $_font-stack-serif, "Heti Kai Black", serif, $_font-stack-symbol
+$font-family-mono = $_font-stack-mono, monospace, $_font-stack-symbol
+
+// 字重 Font Weights
+$font-weight-bolder = 800
+$font-weight-bold = 600
+$font-weight-normal = 400
+$font-weight-lighter = 200
+// 字号 Font Sizes
+16px = 16px
+$font-size-x-large = 20px
+$font-size-large = 18px
+$font-size-small = 14px
+$font-size-x-small = 12px
+// $font-size-h1 = 32px
+// $font-size-h2 = 24px
+// $font-size-h3 = 20px
+// $font-size-h4 = 18px
+// $font-size-h5 = 16px
+// $font-size-h6 = 14px
+// 行 Lines
+// 行宽
+$line-length = 42em
+// 行高 Line Heights
+1,5 = 1.5
+//$line-height-expanded: 1.875 !default;
+2.25 = 2.25
+//$line-height-condensed: 1.25 !default;
+//$line-height-condensed-ultra: 1 !default;
+24px = 16px * 1.5
+$line-height-size-large = 24px
+$line-height-size-x-large = 20px * 1.5
+$line-height-size-small = 24px
+$line-height-size-x-small = 18px
+// $line-height-size-h1 = 48px
+// $line-height-size-h2 = 36px
+// $line-height-size-h3 = 36px
+// $line-height-size-h4 = 24px
+// $line-height-size-h5 = 24px
+// $line-height-size-h6 = 24px
+// 段落 Paragraphs
+// 标准网格单位变量 Standard Length
+// 垂直方向标准单位 = 标准行高
+// 水平方向标准单位 = 标准字号
+24px = 24px
+$std-inline-unit = 16px
+// 示例：缩进单位 = 二倍文字宽度
+$text-indent-length = 2em
+$text-indent-size = 16px * 2
+
+// 栏 Columns
+// 分栏
+$column-count-list = 1, 2, 3, 4
+$column-width-list = 16em, 20em, 24em, 28em, 32em, 36em, 40em, 44em, 48em
+
+// 开发用配置项 Develop Configs
+/// 预设重置方案
+/// `reset`：假定 Eric Meyer 的 CSS Reset 或其它流行的 Reset
+/// `normalize`：指定为 normalize.css
+$_css-reset-scheme = "reset"
+
+// 混合 Mix-ins
+// Mix-in: Clear float
+// clear-float()
+//   &::before,
+//   &::after
+//     content: ""
+//     display: table
+//   &::after
+//     clear: both
+
+// Mix-in: Include Non-cjk styles
+non-cjk-block()
+  &:not(:lang(zh)):not(:lang(ja)):not(:lang(kr)),
+  &:not(:lang(zh))
+    {block}
+
+darkmode-style($darkmode = $darkmode, $dark-selector = $manualmode-dark-selector, $auto-selector = $manualmode-auto-selector)
+  // 'manual' darkmode should provide darkmode selector and auto-darkmode selector
+  if $darkmode == "manual"
+    {$dark-selector}
+      {block}
+    @media (prefers-color-scheme: dark)
+      {$auto-selector}
+        {block}
+  else if $darkmode
+    @media (prefers-color-scheme: dark)
+      {block}

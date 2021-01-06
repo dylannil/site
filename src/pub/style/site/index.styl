@@ -1,0 +1,54 @@
+
+@import 'header'
+@import 'footer'
+@import 'main'
+@import 'home'
+@import 'post'
+@import 'indie'
+@import 'preview'
+
+.article-container
+  padding 0 16px
+
+
+
+
+.site-banner
+  color black
+  &-hello
+    font-size 8vmin
+    line-height 1
+    font-family sans-serif
+  &-links
+    display flex
+  &-link
+    border-bottom 1px solid
+
+// 关于页面 订阅段落
+.form-subscribe
+  padding 0 32px
+  > input[type="email"],
+  > input[type="submit"]
+    display block
+    width 100%
+    height 52px
+    margin-bottom 8px
+    padding .6em 1em
+    box-sizing border-box
+    background-color inherit
+    border 2px solid #4387f4
+    border-radius 52px
+    font-size 20.28px
+    outline none
+  > input[type="submit"]
+    cursor pointer
+  @media (min-width: 500px)
+    display flex
+    flex-direction row
+    > input[type="email"]
+      flex 3 0 100px
+      border-right 0px
+      border-radius 52px 0 0 52px
+    > input[type="submit"]
+      flex 1 0 100px
+      border-radius 0 52px 52px 0

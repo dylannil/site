@@ -1,0 +1,81 @@
+
+@import './user'
+@import './board'
+
+// 用户信息仪表盘
+.dashboard
+  display flex
+  flex-direction column
+  min-height 100vh
+  &-self
+    flex 0 0 auto
+  &-tabs
+    flex 0 0 auto
+  &-page
+    flex 1 0 0
+  width 680px
+  max-width 90%
+  margin 44px auto 220px
+  
+  .link
+    color #3367d6
+    cursor pointer
+    font-size .9em
+    padding 0 3px
+  /section
+    padding-top 21px
+    margin-bottom 3px
+    >h2
+      margin 21px 0 12px
+      padding 8px 0 4px
+    /.card
+      border-radius: 4px;
+      box-shadow 0 1px 2px 0 rgba(60, 64, 67, .3), 0 1px 3px 1px rgba(60, 64, 67, .15)
+      /.card-row
+        display flex
+        padding 0 20px
+        border-top 1px solid rgba(0,0,0,.06)
+        /.card-row-gap
+          padding 12px 0
+          flex 1 1 0
+          display flex
+          flex-direction column
+          line-height 20px
+        /.card-btn
+          padding 8px 24px
+          height 14px
+          line-height 14px
+          align-self center
+          border-radius 3px
+          border 1px solid #dadce0
+          cursor pointer
+          color #1a73e8
+        /.card-icon-btn
+          width 36px
+          height 36px
+          margin 0 -8px 0 16px
+          cursor pointer
+          align-self center
+          >div
+            width 0
+            height 0
+            margin 13px auto
+            border-left 5px solid #5f6368
+            border-top 5px solid transparent
+            border-bottom 5px solid transparent
+      /.card-list
+        padding 0 20px 0 60px
+        /.card-item
+          min-height 48px
+          display flex
+          align-items center
+      /.card-form
+        padding 30px 60px
+        >form
+          >label
+            @extends .user-form > label
+          >input[type="submit"]
+            @extends .user-form > input[type="submit"]
+            margin-bottom 20px
+
+

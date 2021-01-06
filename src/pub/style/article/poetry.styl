@@ -1,0 +1,41 @@
+@import '../variables'
+
+article
+  // 定义古文、古诗样式
+  &.heti--ancient,
+  &.heti--poetry
+    // 古文、古诗用宋体（覆盖全局字体）
+    font-family: $font-family-song
+    // 古文标题用楷体（覆盖全局字体）
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6
+      font-family: $font-family-kai-black
+      font-weight: 800
+      text-align: center
+      // 标题内元信息仅在桌面端采取悬挂处理，且不占据空间影响文字居中
+      .heti-meta
+        font-weight: 400
+        @media screen and (min-width: 640px)
+          position: absolute
+          line-height: inherit
+          text-indent: 0
+          display: inline
+          margin-block-start: 4px
+          margin-inline-start: 8px
+    .heti-meta
+      line-height: 24px
+      text-align: center
+      text-indent: 0
+  &.heti--ancient
+    // 古文（文言文、词）首行缩进
+    p
+      text-indent: 2em
+  &.heti--poetry
+    // 诗节无缩进，居中显示
+    p
+      text-align: center
+      text-indent: 0

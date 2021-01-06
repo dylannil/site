@@ -1,0 +1,5 @@
+**/*.md
+**/*.map
+dist/page
+dist/post
+LICENSE

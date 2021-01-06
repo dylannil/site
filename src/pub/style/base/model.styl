@@ -1,0 +1,36 @@
+
+// 模态框
+
+.model
+  position fixed
+  top 0
+  right 0
+  bottom 0
+  left 0
+  z-index 10000000000
+  background-color rgba(0, 0, 0, .4)
+  display flex
+  flex-direction column
+  justify-content center
+  align-items center
+  visibility hidden
+  opacity 0
+  transition-timing-function cubic-bezier(0.24, 0.22, 0.015, 1.56)
+  transition-duration .3s
+  transition-property visibility, opacity
+  &-box
+    max-width 90%
+    max-height 90%
+    padding 24px
+    background-color white
+    box-shadow 2px 2px 8px 0 black
+    overflow auto
+    transform scale(.8) translate(0, -100px)
+    transition-timing-function cubic-bezier(0.24, 0.22, 0.015, 1.56)
+    transition-duration .3s
+    transition-property transform
+  &.visible
+    visibility visible
+    opacity 1
+    > .model-box
+      transform scale(1) translate(0, 0)

@@ -1,0 +1,31 @@
+@import '../variables'
+
+article
+  // 定义多栏排版
+  .heti--columns-1,
+  .heti--columns-2,
+  .heti--columns-3,
+  .heti--columns-4,
+  .heti--columns-16em,
+  .heti--columns-20em,
+  .heti--columns-24em,
+  .heti--columns-28em,
+  .heti--columns-32em,
+  .heti--columns-36em,
+  .heti--columns-40em,
+  .heti--columns-44em,
+  .heti--columns-48em
+    // 多行时不再设总宽度限制
+    max-width: none
+    column-gap: 2em
+    // 多栏排版时减半段间距
+    p
+      margin-block-start: (24px / 2 / 2)
+      margin-block-end: (24px / 2)
+      text-indent: 2em
+  for $columns in (1, 2, 3, 4)
+    .heti--columns-{$columns}
+      column-count: $columns
+  for $column-width in (16em, 20em, 24em, 28em, 32em, 36em, 40em, 44em, 48em)
+    .heti--columns-{$column-width}
+      column-width: $column-width

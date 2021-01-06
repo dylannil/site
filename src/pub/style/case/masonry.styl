@@ -1,0 +1,141 @@
+
+
+
+
+.masonry
+  display flex
+  align-items flex-start
+  justify-content space-between
+  &-lane
+    display none
+    flex 1 0 0
+    margin-left 16px
+    &:first-child
+      display block
+      margin-left 0
+  &-tile
+    margin 16px 0
+    cursor pointer
+    // background-color #efefef
+    // background-color #6f5b4d
+    // background-color #292d36
+    // background-color #a097d8
+    position relative
+    overflow hidden
+    &-back
+      background-color #efefef
+      border-radius 16px
+      overflow hidden
+      min-height 100px
+      position relative
+      > img
+        width 100%
+      > .masonry-tile-mask
+        background-color rgba(0, 0, 0, .6)
+        position absolute
+        top 0
+        right 0
+        bottom 0
+        left 0
+        visibility hidden
+        opacity 0
+        transition-timing-function cubic-bezier(0.24, 0.22, 0.015, 1.56)
+        transition-duration .2s
+        transition-property visibility, opacity
+        > .masonry-tile-type
+          position absolute
+          top 15px
+          right -25px
+          transform rotate(45deg)
+          height 20px
+          line-height 20px
+          text-align center
+          width 100px
+          background-color red
+          color white
+          text-transform uppercase
+    &-info
+      color white
+      position absolute
+      top 0
+      right 0
+      bottom 0
+      left 0
+      display flex
+      flex-direction column
+      justify-content center
+      align-items center
+      background-color transparent
+      -webkit-tap-highlight-color none
+      visibility hidden
+      transform scale(0)
+      transition-timing-function cubic-bezier(0.24, 0.22, 0.015, 1.56)
+      transition-duration .2s
+      transition-property visibility, transform
+      > p
+        margin 10px 0
+        padding 0 24px
+    &-priv
+      position absolute
+      top 0
+      left 0
+      width 0
+      height 0
+      border 3px solid transparent
+      border-top-color #F66A0A
+      border-left-color #F66A0A
+    &-head
+      position absolute
+      top 0
+      right 0
+      left 0
+      padding 4px
+      > a
+        display inline-block
+        vertical-align -10%
+        width 24px
+        height 24px
+        background-color #44d1f4
+        -webkit-mask no-repeat 50% 50%/24px 24px
+        -webkit-mask-image url('data:image/svg+xml;utf8,<svg viewBox=\"0 0 16 16\" xmlns=\"http://www.w3.org/2000/svg\"><path fill=\"%23ABABAB\" d=\"M14.7,4.1l-2.8-2.8c-0.5-0.4-1.2-0.4-1.7,0L6.9,4.7C6.6,5,6.6,5.5,6.9,5.8c0.3,0.3,0.8,0.3,1.1,0l2.5-2.5c0.3-0.3,0.8-0.3,1.1,0l1.1,1.1c0.3,0.3,0.3,0.8,0,1.1L10.2,8c-0.3,0.3-0.3,0.8,0,1.1c0.3,0.3,0.8,0.3,1.1,0l3.3-3.3C15.1,5.3,15.1,4.6,14.7,4.1C14.7,4.1,14.7,4.1,14.7,4.1z M4.4,12.7l-1.1-1.1c-0.3-0.3-0.3-0.8,0-1.1L5.8,8c0.3-0.3,0.3-0.8,0-1.1C5.5,6.6,5,6.6,4.7,6.9l-3.3,3.3c-0.5,0.5-0.5,1.2,0,1.7l2.8,2.8c0.5,0.5,1.2,0.5,1.7,0l3.3-3.3c0.3-0.3,0.3-0.8,0-1.1l0,0c-0.3-0.3-0.8-0.3-1.1,0l-2.5,2.5C5.2,13,4.7,13,4.4,12.7z M5.4,9.4l3.9-3.9c0.3-0.3,0.9-0.3,1.2,0c0.3,0.3,0.3,0.9,0,1.2l-3.9,3.9c-0.3,0.3-0.9,0.3-1.2,0C5.1,10.2,5.1,9.7,5.4,9.4z\" /></svg>')
+    &-foot
+      position absolute
+      left 0
+      right 0
+      bottom 0
+      line-height 21px
+      padding 0 8px
+      display flex
+      justify-content space-between
+    &-word
+      text-transform uppercase
+      font-size .9em
+      font-weight bold
+      > span
+        margin-left 4px
+    &:hover
+      .masonry-tile-mask
+        visibility visible
+        opacity 1
+      .masonry-tile-info
+        visibility visible
+        transform scale(1)
+    // &:before
+    //   content attr(data-sn)
+    //   display block
+    //   absolute top 10px left 10px
+    //   height 20px
+    //   width 20px
+    //   background-color black
+    //   color white
+    //   line-height 20px
+    //   text-align center
+  @media (min-width: 992px)
+    &-lane:nth-child(1),
+    &-lane:nth-child(2),
+    &-lane:nth-child(3)
+      display block;
+  @media (min-width: 576px)
+    &-lane:nth-child(1),
+    &-lane:nth-child(2)
+      display block;

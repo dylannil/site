@@ -1,0 +1,266 @@
+/**
+ * 表单样式
+ */
+
+form
+  position relative
+  z-index 0
+.form
+  @extends form
+  // 行 可以容纳多个字段，自动横向排列，自动间隔
+  &-row
+    display flex
+    align-items top
+    > div
+      flex 1 0 0
+      margin-right 8px
+      &:last-child
+        margin-right 0
+    @media (max-width: 576px)
+      display block
+      > div
+        margin 0
+  // 尾 左侧可以有多个副按钮 右侧一个主按钮
+  &-end
+    margin-top 26px
+    padding-bottom 20px
+    &-cell
+      height 48px
+      display flex 
+      align-items center
+    &-info
+      text-align right
+    &-intro,
+    &-error
+      padding 4px 0 0 10px
+      font 400 12px Roboto,RobotoDraft,Helvetica,Arial,sans-serif
+      min-height 16px
+      color #5f6368
+    &-error
+      display none
+      color #d93025
+    &.error
+      > .form-end-info
+        > .form-end-intro
+          display none
+        > .form-end-error
+          display block
+  // 字段 包含三层
+  // - 单元格 和 提示区 和 链接区；可以自动撑开，字段高度不限定
+  // - 前缀、输入、后缀 和 描述、警告 和 链接
+  // - 输入元件及其标签
+  &-field
+    padding 8px 0 16px
+    font-size 14px
+    // 单元格 使用伪元件实现框线，以优化动画效果
+    &-cell
+      display flex
+      align-items center
+      position relative
+      // height 36px
+      &:before,
+      &:after
+        content ''
+        display block
+        absolute top right bottom left
+        z-index -1
+        // pointer-events none
+        box-sizing border-box
+        border 1px solid #DADCE0
+        border-radius 4px
+      &:after
+        opacity 0
+        border 1px solid #1a73e8
+        transition opacity .15s cubic-bezier(.4,0,.2,1)
+      // &:focus-within
+      //   &:after
+      //     opacity 1
+      //     border-width 2px
+      > label
+        border none
+        flex 1 0 0
+    // 提示区
+    &-info
+      overflow hidden
+    // 链接区
+    &-link
+      padding 9px 0 3px
+      line-height 20px
+      color #1a73e8
+      font-weight 500
+      cursor pointer
+      font-family roboto,'Noto Sans Myanmar UI',arial,sans-serif
+    // 单元格内：前缀、后缀、输入框
+    &-prefix,
+    &-suffix
+      height 100%
+      line-height 36px
+      padding 0 9px 0 6px
+    &-prefix
+      padding 0 6px 0 9px
+    &-input
+      position relative
+      display block
+      > span
+        position absolute
+        left 4px
+        top 10px
+        padding 0 6px
+        font-size 14px
+        line-height 16px
+        pointer-events none
+        transform-origin bottom left
+        transition transform .15s cubic-bezier(.4,0,.2,1),
+          opacity .15s cubic-bezier(.4,0,.2,1),
+          background-color .15s cubic-bezier(.4,0,.2,1)
+      > input
+        border none
+        outline none
+        &[type="text"],
+        &[type="email"],
+        &[type="number"],
+        &[type="password"]
+          padding 8px 10px
+          -webkit-tap-highlight-color transparent
+          color #202124
+          background none
+          line-height 20px
+          box-sizing border-box
+          width 100%
+          font-size 14px
+        &[type="checkbox"],
+        &[type="radio"]
+          appearance none
+          width 18px
+          height 18px
+          border-radius 0
+          border 2px solid black
+          &:checked
+            border-color transparent
+            background #1a73e8  no-repeat 50% 50%/16px 16px
+            background-image url('data:image/svg+xml;utf8,<svg viewBox=\"0 0 16 16\" xmlns=\"http://www.w3.org/2000/svg\"><path fill=\"%23FFFFFF\" d=\"M1 8l1 -1l4 4l8 -8l1 1l-9 9z\" /></svg>')
+        &[type="file"]
+          display none
+      > textarea
+        vertical-align top
+        resize vertical
+        padding 8px 10px
+        border none
+        -webkit-tap-highlight-color transparent
+        outline none
+        color #202124
+        background none
+        line-height 20px
+        box-sizing border-box
+        width 100%
+        font-size 14px
+      > .form-field-preview
+        position relative
+        z-index -2
+        width 100%
+        min-height 80px
+        background no-repeat center center / 32px 32px
+        background-color #fafafa
+        display flex
+        align-items center
+        justify-content center
+        > img
+          max-width 100%
+          max-height 240px
+        &:empty
+          background-image url('data:image/svg+xml;utf8,<svg viewBox=\"0 0 16 16\" xmlns=\"http://www.w3.org/2000/svg\"><path fill=\"%23ABABAB\" d=\"M7 0h2v7h7v2h-7v7h-2v-7h-7v-2h7z\" /></svg>')
+    // 提示区，分两类提示：说明、错误
+    &-intro,
+    &-error
+      padding 4px 0 0 10px
+      font 400 12px Roboto,RobotoDraft,Helvetica,Arial,sans-serif
+      min-height 16px
+      color #5f6368
+    &-error
+      display none
+      color #d93025
+    // 特殊状态：非空、激活、错误
+    &.nonempty
+      > .form-field-cell
+        > .form-field-input
+          // 浏览器自动填充的值会给 input 带上一个背景色覆盖背后的边框
+          // 此处使用样式为 input 添加一层新的边框
+          > input:-webkit-autofill
+            border 1px solid #DADCE0
+            border-radius 4px
+            padding 7px 9px
+          > span
+            transform scale(.75) translateY(-160%)
+            background-color #FFFFFF
+    &.focus
+      >.form-field-cell
+        &:after
+          opacity 1
+          border-width 2px
+        > .form-field-input
+          > input:-webkit-autofill
+            border 2px solid #1a73e8
+            padding 6px 8px
+          > span
+            transform scale(.75) translateY(-160%)
+            background-color #FFFFFF
+            color #1A73E8
+    &.error
+      >.form-field-cell
+        &:after
+          opacity 1
+          border-color #d93025
+        > .form-field-input
+          > input:-webkit-autofill
+            border 1px solid #d93025
+            padding 7px 9px
+          > span
+            color #d93025
+      >.form-field-info
+        > .form-field-intro
+          display none
+        > .form-field-error
+          display block
+    &.focus.error
+      >.form-field-cell
+        > .form-field-input
+          > input:-webkit-autofill
+            border 2px solid #d93025
+            padding 6px 8px
+          > span
+            color #d93025
+  &-submit
+    height 36px
+    margin 6px 0 6px auto
+    padding 0 24px
+    background-color #1a73e8
+    color white
+    font-weight 500
+    border-radius 4px
+    border none
+    outline none
+    cursor pointer
+    &:hover
+      box-shadow 0 1px 2px 0 rgba(60,64,67,0.3),0 1px 3px 1px rgba(60,64,67,0.15)
+      background-color #1a73e8
+  &-cancel
+    height 36px
+    margin 6px 0 6px 8px
+    padding 0 24px
+    background-color transparent
+    color #3d3d3d
+    font-weight 500
+    border-radius 4px
+    border 1px solid #8b8b8b
+    outline none
+    cursor pointer
+    &:hover
+      box-shadow 0 1px 2px 0 rgba(60,64,67,0.3),0 1px 3px 1px rgba(60,64,67,0.15)
+      // background-color #1a73e8
+  &-link
+    padding 9px 0 3px
+    line-height 20px
+    color #1a73e8
+    font-weight 500
+    cursor pointer
+    font-family roboto,'Noto Sans Myanmar UI',arial,sans-serif

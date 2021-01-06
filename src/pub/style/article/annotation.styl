@@ -1,0 +1,21 @@
+
+@import '../variables'
+
+article
+  .heti--annotation
+    // 首行缩进且行间距加大，去除段落间距
+    p
+      margin-block-start: 0
+      margin-block-end: 0
+      line-height: 2.25
+      text-indent: 2em
+    // 着重号不应影响行间距，经测试最小可用行高为 1.7
+    em
+      -webkit-text-emphasis: filled circle
+      -webkit-text-emphasis-position: under
+      font-weight: 400
+      non-cjk-block()
+    // 元信息保持间距
+    .heti-meta
+      margin-block-start: (24px / 2)
+      margin-block-end: 24px

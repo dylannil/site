@@ -1,0 +1,60 @@
+
+
+
+.site-preview
+  position fixed
+  top 0
+  right 0
+  bottom 0
+  left 0
+  z-index 1000000
+  &-mask
+    position fixed
+    top 0
+    right 0
+    bottom 0
+    left 0
+    background-color rgba(0,0,0, .7)
+  &-view
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    > img
+      transform translate(-50%, -50%)
+      // max-width 90vw
+      // max-height 90vh
+  &-info
+    position: absolute;
+    left 0
+    right 0
+    bottom 0
+    padding 24px
+    color white
+    background-color rgba(0,0,0,.2)
+    > h2,
+    > p
+      margin 10px 0
+      line-height 27px
+    > h2
+      float left
+    > p
+      overflow ellipsis
+      padding-left 1em
+    &:hover
+      > p
+        clear both
+        overflow initial
+        white-space initial
+        padding-left 0
+  &-hide
+    position absolute
+    top 24px
+    right 24px
+    width 32px
+    height 32px
+    z-index 1000000000000000
+    background-color #C7C7C7
+    -webkit-mask no-repeat 50% 50%/24px 24px
+    -webkit-mask-image url('data:image/svg+xml;utf8,<svg viewport=\"0 0 16 16\" width=\"16\" height=\"16\" xmlns=\"http://www.w3.org/2000/svg\"><path fill=\"%23000000\" d=\"M1 0l7 7l7 -7l1 1l-7 7l7 7l-1 1l-7 -7l-7 7l-1 -1l7 -7l-7 -7z\" /></svg>')

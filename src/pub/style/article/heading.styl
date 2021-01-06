@@ -1,0 +1,49 @@
+@import 'variables'
+
+article
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6
+    position: relative
+    // 顶边距默认为一行间距，且不因边距重叠原因减半
+    // 底边距考虑到亲密性，默认为半行间距
+    margin: 0
+    margin-block-start: 24px
+    margin-block-end: 12px
+    font-weight: 800
+  h1
+    margin-block-end: 24px
+    font-size: 32px
+    line-height: 48px
+  h2
+    font-size: 24px
+    line-height: 36px
+  h3
+    font-size: 20px
+    line-height: 36px
+  h4
+    font-size: 18px
+    line-height: 24px
+  h5
+    font-size: 16px
+    line-height: 24px
+  h6
+    font-size: 14px
+    line-height: 24px
+  h1,
+  h2,
+  h3
+    // 中文大标题增加微小文字间距
+    letter-spacing: 0.05em
+    // 非中文时不加间距
+    non-cjk-block()
+  // 压缩两个标题之间的间距
+  h1 + h2,
+  h2 + h3,
+  h3 + h4,
+  h4 + h5,
+  h5 + h6
+    margin-block-start: 12px

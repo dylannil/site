@@ -1,0 +1,104 @@
+/**
+ * 独立页面样式
+ * 
+ * - 大屏 居中划分空间
+ *   - 页首空间内顶部
+ *   - 页尾空间外底部
+ *   - 内容按需撑开，最小高度为 flex 0
+ * - 小屏 覆盖全部空间
+ *   - 页首空间内顶部
+ *   - 页尾空间内底部
+ *   - 内容按需撑开，最小高度为 flex 1
+ */
+
+// 以全屏进行定位，可以撑开以超出一屏
+.indie
+  min-height 100vh
+  margin -84px 0
+  display flex
+  flex-direction column
+  align-items center
+  justify-content center
+  // 居中划区，小屏幕时将宽度覆盖到屏幕宽度
+  // 区内设置内边距
+  &-box
+    display flex
+    flex-direction column
+    align-items center
+    justify-content center
+    box-sizing border-box
+    width 448px
+    margin 44px 0
+    padding 48px 40px 36px
+    border 1px solid #dadce0
+    border-radius 8px
+    position relative
+    @media (max-width: 576px)
+      border 0px
+      border-radius 0px
+      width 100%
+      margin unset
+      flex 1 0 0
+  // 头部保持在划区内部的顶部
+  &-header
+    width 100%
+    &-logo
+      margin -16px -19px
+  // 尾部大屏移动到区外，小屏幕下保持在区内
+  &-footer
+    absolute left right top 100%
+    width 100%
+    padding-top 24px
+    display flex
+    align-items center
+    flex-wrap wrap
+    font-size 12px
+    line-height 1.4
+    color #202124
+    &-intro
+      white-space wrap
+      margin-right auto
+      &:only-child
+        margin-left auto
+    &-links
+      margin 0 -16px
+      display flex
+      justify-content flex-end
+      flex-wrap wrap
+      list-style none
+    &-link
+      padding 0 16px
+      > a
+        color inherit
+    @media (max-width: 576px)
+      position static
+      margin-bottom -12px
+  // 内容，大屏幕按需自动撑开高度，小屏幕撑开以使划区充满整个屏幕
+  &-main
+    width 100%
+    flex 0 0 auto
+    @media (max-width: 576px)
+      flex 1 0 0;
+    &-title
+      padding-top 16px
+      color: #202124;
+      padding-bottom: 0;
+      padding-top: 16px;
+      font-family: 'Google Sans','Noto Sans Myanmar UI',arial,sans-serif;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.3333;
+      margin-bottom: 0;
+      margin-top: 0;
+      height 31px
+      line-height 31p
+    &-desc
+      color: #202124;
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: .1px;
+      line-height: 1.5;
+      padding-bottom: 0;
+      padding-top: 8px;
+    &-part
+      padding-top 24px
